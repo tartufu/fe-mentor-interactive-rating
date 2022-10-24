@@ -12,6 +12,14 @@ const marginTopStyling = { marginTop: "1rem" };
 export default function RatingCard() {
   const [ratingSubmitted, setRatingSubmitted] = useState(false);
 
+  const [ratingArr, setRatingArr] = useState([
+    { id: 1, val: 1, isSelected: false },
+    { id: 2, val: 2, isSelected: false },
+    { id: 3, val: 3, isSelected: false },
+    { id: 4, val: 4, isSelected: false },
+    { id: 5, val: 5, isSelected: false },
+  ]);
+
   return (
     <div className="rating-card-box">
       {ratingSubmitted && <p>asdasd </p>}
@@ -56,17 +64,19 @@ export default function RatingCard() {
               marginTop: "1rem",
             }}
           >
-            <RatingNumber number={1} isSelected={false} />
-            <RatingNumber number={2} isSelected={false} />
-            <RatingNumber number={3} isSelected={false} />
-            <RatingNumber number={4} isSelected={false} />
-            <RatingNumber number={5} isSelected={false} />
+            {ratingArr.map((rating) => (
+              <RatingNumber
+                id={rating.id}
+                number={rating.val}
+                isSelected={false}
+              />
+            ))}
           </div>
           <div style={marginTopStyling}>
             <Button
               variant="contained"
               disableElevation
-              onClick={() => alert("PING")}
+              onClick={() => setRatingSubmitted(!ratingSubmitted)}
               sx={{
                 width: "100%",
                 borderRadius: "1rem",
