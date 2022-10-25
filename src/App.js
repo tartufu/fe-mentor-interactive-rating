@@ -6,7 +6,7 @@ import "./App.css";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import RatingCard from "./components/RatingCard";
+import RatingCardContainer from "./components/RatingCardContainer";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
             height: "100vh",
           }}
         >
-          <RatingCard />
+          <RatingCardContainer />
         </Box>
       </Container>
     </div>
