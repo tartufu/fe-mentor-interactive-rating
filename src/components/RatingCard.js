@@ -11,7 +11,7 @@ export default function RatingCard({
   ratingSubmitted,
   setRatingSubmitted,
   ratingArr,
-  setRatingArr,
+  ratingClickHandler,
 }) {
   const marginTopStyling = { marginTop: "1rem" };
 
@@ -59,9 +59,11 @@ export default function RatingCard({
         >
           {ratingArr.map((rating) => (
             <RatingNumber
+              key={rating.id}
               id={rating.id}
               number={rating.val}
-              isSelected={false}
+              isSelected={rating.isSelected}
+              ratingClickHandler={ratingClickHandler}
             />
           ))}
         </div>

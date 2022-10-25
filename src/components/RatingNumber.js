@@ -2,9 +2,16 @@ import React from "react";
 
 import Box from "@mui/material/Box";
 
-export default function RatingNumber({ number, isSelected }) {
+export default function RatingNumber({
+  id,
+  number,
+  isSelected,
+  ratingClickHandler,
+}) {
   return (
     <Box
+      component="span"
+      onClick={() => ratingClickHandler(id, number)}
       sx={{
         lineHeight: "2.5rem",
         width: "2.5rem",

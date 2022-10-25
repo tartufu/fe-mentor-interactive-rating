@@ -16,6 +16,30 @@ export default function RatingCardContainer() {
     { id: 5, val: 5, isSelected: false },
   ]);
 
+  const ratingClickHandler = (id, val) => {
+    setRatingArr((prevState) => {
+      const ratingArrCopy = [...prevState];
+
+      const selectedRatingIndex = ratingArrCopy.findIndex(
+        (rating) => id === rating.id
+      );
+
+      const previousRatingIndex = ratingArrCopy.findIndex(
+        (rating) => rating.isSelected
+      );
+
+      if (previousRatingIndex !== -1) {
+        ratingArrCopy[previousRatingIndex].isSelected = false;
+      }
+
+      ratingArrCopy[selectedRatingIndex].isSelected = true;
+
+      return ratingArrCopy;
+    });
+
+    setSelectedRating(val);
+  };
+
   return (
     <div className="rating-card-box" style={{ minHeight: "350px" }}>
       {!ratingSubmitted && (
@@ -24,6 +48,7 @@ export default function RatingCardContainer() {
           setRatingSubmitted={setRatingSubmitted}
           ratingArr={ratingArr}
           setRatingArr={setRatingArr}
+          ratingClickHandler={ratingClickHandler}
         />
       )}
 
